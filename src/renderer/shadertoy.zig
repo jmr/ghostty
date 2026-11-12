@@ -423,7 +423,7 @@ test "spirv" {
     const testing = std.testing;
     const alloc = testing.allocator;
 
-    const src = try testGlslZ(alloc, test_crt);
+    const src = try testGlslZ(alloc, test_focus);
     defer alloc.free(src);
 
     var buf: [4096 * 4]u8 = undefined;
@@ -451,7 +451,7 @@ test "shadertoy to msl" {
     const testing = std.testing;
     const alloc = testing.allocator;
 
-    const src = try testGlslZ(alloc, test_crt);
+    const src = try testGlslZ(alloc, test_focus);
     defer alloc.free(src);
 
     var buf: std.Io.Writer.Allocating = .init(alloc);
@@ -471,7 +471,7 @@ test "shadertoy to glsl" {
     const testing = std.testing;
     const alloc = testing.allocator;
 
-    const src = try testGlslZ(alloc, test_crt);
+    const src = try testGlslZ(alloc, test_focus);
     defer alloc.free(src);
 
     var buf: std.Io.Writer.Allocating = .init(alloc);
@@ -489,6 +489,5 @@ test "shadertoy to glsl" {
     // log.warn("glsl={s}", .{glsl});
 }
 
-const test_crt = @embedFile("shaders/test_shadertoy_crt.glsl");
 const test_invalid = @embedFile("shaders/test_shadertoy_invalid.glsl");
 const test_focus = @embedFile("shaders/test_shadertoy_focus.glsl");
